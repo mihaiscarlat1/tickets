@@ -6,6 +6,7 @@ use EM\ItineraryManagement\AirportTicket;
 use EM\ItineraryManagement\Printer;
 use EM\ItineraryManagement\Tickets;
 use EM\ItineraryManagement\TicketSortingAlgorithmA;
+use EM\ItineraryManagement\TicketSortingAlgorithmB;
 use EM\ItineraryManagement\TrainTicket;
 use EM\ItineraryManagement\TramTicket;
 
@@ -23,7 +24,9 @@ shuffle($ticketsArtificialArray);
 
 $tickets = new Tickets(...$ticketsArtificialArray);
 
-$ticketSortingAlgo = new TicketSortingAlgorithmA($tickets);
+$ticketSortingAlgo = new TicketSortingAlgorithmB($tickets);
 $orderedTickets = $ticketSortingAlgo->sort($start);
+
+//print_r($orderedTickets);
 
 Printer::printAll($orderedTickets);
