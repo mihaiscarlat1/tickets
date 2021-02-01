@@ -8,9 +8,9 @@ class TrainTicket extends Ticket
 {
     private string $trainNr;
     private string $platform;
-    private string $seatNr;
+    private ?string $seatNr;
 
-    public function __construct($from, $to, string $trainNr, string $platform, string $seatNr)
+    public function __construct($from, $to, string $trainNr, string $platform, ?string $seatNr)
     {
         parent::__construct($from, $to);
         $this->trainNr = $trainNr;
@@ -35,10 +35,15 @@ class TrainTicket extends Ticket
     }
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getSeatNr(): string
+    public function getSeatNr(): ?string
     {
         return $this->seatNr;
+    }
+
+    public function hasSeatNr(): bool
+    {
+        return null !== $this->seatNr;
     }
 }

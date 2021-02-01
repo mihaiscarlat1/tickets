@@ -3,10 +3,10 @@ namespace EM\ItineraryManagement;
 
 abstract class Ticket
 {
-    private string $from;
-    private string $to;
+    protected string $from;
+    protected string $to;
 
-    public function __construct($from, $to)
+    public function __construct(string $from,string $to)
     {
         $this->to = $to;
         $this->from = $from;

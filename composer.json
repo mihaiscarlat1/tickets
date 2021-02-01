@@ -13,5 +13,8 @@
     "autoload": {
         "psr-4": {"EM\\": "src/"}
     },
+    "autoload-dev": {
+        "psr-4": {"Test\\": "tests"}
+    },
     "require": {}
 }

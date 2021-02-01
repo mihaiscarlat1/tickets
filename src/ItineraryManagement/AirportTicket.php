@@ -3,21 +3,35 @@
 
 namespace EM\ItineraryManagement;
 
+use EM\ItineraryManagement\Exception\InvalidArgumentException;
 
 class AirportTicket extends Ticket
 {
+    const SELF_LUGGAGE = 'self';
+    const LUGGAGE_PREVIOUS_FLIGHT = 'previous';
+
+    const LUGGAGE_TYPES = [
+        self::SELF_LUGGAGE,
+        self::LUGGAGE_PREVIOUS_FLIGHT
+    ];
+
     private string $ticketNr;
     private string $gate;
     private string $seat;
-    private bool $selfLuggage;
+    private string $luggageType;
 
-    public function __construct(string $from, string $to, string $ticketNr, string $gate, string $seat, bool $selfLuggage)
+    public function __construct(string $from, string $to, string $ticketNr, string $gate, string $seat, string $luggageType)
     {
         parent::__construct($from, $to);
         $this->ticketNr = $ticketNr;
         $this->gate = $gate;
         $this->seat = $seat;
-        $this->selfLuggage = $selfLuggage;
+        $this->luggageType = $luggageType;
+
+        if(!in_array($luggageType, self::LUGGAGE_TYPES)) {
+            throw new InvalidArgumentException('Luggage type invalid, must be one of: ['. implode(',', self::LUGGAGE_TYPES). ']');
+        }
+        $this->luggageType = $luggageType;
     }
 
     /**
@@ -45,10 +59,10 @@ class AirportTicket extends Ticket
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isSelfLuggage(): bool
+    public function getLuggageType(): string
     {
-        return $this->selfLuggage;
+        return $this->luggageType;
     }
 }
