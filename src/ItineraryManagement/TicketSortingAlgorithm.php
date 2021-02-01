@@ -1,5 +1,5 @@
 <?php
-
+namespace EM\ItineraryManagement;
 
 interface TicketSortingAlgorithm
 {

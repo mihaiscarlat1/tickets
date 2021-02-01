@@ -1,5 +1,7 @@
 <?php
+namespace EM\ItineraryManagement;
 
+use Iterator;
 
 class Tickets implements Iterator
 {
@@ -11,21 +13,6 @@ class Tickets implements Iterator
             $this->tickets[] = $ticket;
         }
     }
-
-//    public function sort(string $start)
-//    {
-//        $newArrayFrom = $orderedArray = [];
-//        foreach($this->tickets as $ticket) {
-//            $newArrayFrom[$ticket->from()] = $ticket;
-//        }
-//        $orderedArray[] = $newArrayFrom[$start];
-//        foreach($this->tickets as $ticket) {
-//            $prev = end($orderedArray);
-//            if(isset($newArrayFrom[$prev->to()]))
-//                $orderedArray[] = $newArrayFrom[$prev->to()];
-//        }
-//        return $orderedArray;
-//    }
 
     public function current()
     {

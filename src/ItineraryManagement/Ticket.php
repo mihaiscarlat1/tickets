@@ -1,7 +1,7 @@
 <?php
+namespace EM\ItineraryManagement;
 
-
-class Ticket
+abstract class Ticket
 {
     private string $from;
     private string $to;
