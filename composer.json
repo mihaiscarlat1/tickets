@@ -1,0 +1,17 @@
+{
+    "name": "scarlat/em",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "authors": [
+        {
+            "name": "Mihai Scarlat",
+            "email": "scarlatmihai25@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"scarlat\\ItineraryManagement\\": "src/"}
+    },
+    "require": {}
+}
