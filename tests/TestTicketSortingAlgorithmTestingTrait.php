@@ -1,18 +1,21 @@
 <?php
 
+
 namespace Test;
+
 
 use EM\ItineraryManagement\AirportBusTicket;
 use EM\ItineraryManagement\AirportTicket;
-use EM\ItineraryManagement\Tickets;
-use EM\ItineraryManagement\TicketSortingAlgorithmA;
 use EM\ItineraryManagement\TrainTicket;
 use EM\ItineraryManagement\TramTicket;
-use PHPUnit\Framework\TestCase;
 
-class TestTicketSortingAlgorithm extends TestCase
+trait TestTicketSortingAlgorithmTestingTrait
 {
-    public function testSomething()
+    /**
+     * Obviously should be batches of data, but one should be enough to get the point across
+     * @return array[]
+     */
+    public function inputDataProvider()
     {
         $start = 'St. Anton am Arlberg Bahnhof';
         $a = new TrainTicket('St. Anton am Arlberg Bahnhof', 'Innsbruck Hbf', 'RJX 765', '3', '17C');
@@ -23,22 +26,10 @@ class TestTicketSortingAlgorithm extends TestCase
         $f = new AirportTicket('Bologna Guglielmo Marconi Airport', 'Paris CDG Airport', 'AF1229', '22', '10A', AirportTicket::SELF_LUGGAGE);
         $g = new AirportTicket('Paris CDG Airport', 'Chicago', 'AF136', '32', '10A', AirportTicket::LUGGAGE_PREVIOUS_FLIGHT);
 
-        $ticketsArtificialArray = [$a, $b, $c, $d, $e, $f, $g];
-        shuffle($ticketsArtificialArray);
+        $ticketsArray = [$a, $b, $c, $d, $e, $f, $g];
 
-        $ticketsCorrectOrder = new Tickets(...[$a, $b, $c, $d, $e, $f, $g]);
-        $ticketsShuffled = new Tickets(...$ticketsArtificialArray);
-
-        $ticketSortingAlgo = new TicketSortingAlgorithmA($ticketsShuffled);
-        $orderedTickets = $ticketSortingAlgo->sort($start);
-
-        while($ticketsCorrectOrder->valid()) {
-            self::assertTrue($orderedTickets->valid());
-            $ticket = $ticketsCorrectOrder->current();
-            self::assertEqualsCanonicalizing($ticket, $orderedTickets->current());
-
-            $ticketsCorrectOrder->next();
-            $orderedTickets->next();
-        }
+        return [
+            [$start, $ticketsArray],
+        ];
     }
 }

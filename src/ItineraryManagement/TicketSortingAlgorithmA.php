@@ -3,21 +3,22 @@ namespace EM\ItineraryManagement;
 
 class TicketSortingAlgorithmA implements TicketSortingAlgorithm
 {
-    private Tickets $initialTickets;
+    private string $start;
 
-    public function __construct(Tickets $initialTickets)
+    public function __construct(string $start)
     {
-        $this->initialTickets = $initialTickets;
+        $this->start = $start;
     }
 
-    public function sort(string $start): Tickets
+    public function sort(Tickets $initialTickets): Tickets
     {
         $newArrayFrom = $orderedArray = [];
-        foreach($this->initialTickets as $ticket) {
+        foreach($initialTickets as $ticket) {
             $newArrayFrom[$ticket->from()] = $ticket;
         }
-        $orderedArray[] = $newArrayFrom[$start];
-        foreach($this->initialTickets as $ticket) {
+        $orderedArray[] = $newArrayFrom[$this->start];
+        $initialTicketsCount = count(iterator_to_array($initialTickets));
+        for($i=0; $i<$initialTicketsCount; $i++) {
             $prev = end($orderedArray);
             if(isset($newArrayFrom[$prev->to()]))
                 $orderedArray[] = $newArrayFrom[$prev->to()];

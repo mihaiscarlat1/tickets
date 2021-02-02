@@ -37,7 +37,7 @@ class AirportTicket extends Ticket
     /**
      * @return string
      */
-    public function getTicketNr(): string
+    public function ticketNr(): string
     {
         return $this->ticketNr;
     }
@@ -45,7 +45,7 @@ class AirportTicket extends Ticket
     /**
      * @return string
      */
-    public function getGate(): string
+    public function gate(): string
     {
         return $this->gate;
     }
@@ -53,7 +53,7 @@ class AirportTicket extends Ticket
     /**
      * @return string
      */
-    public function getSeat(): string
+    public function seat(): string
     {
         return $this->seat;
     }
@@ -61,7 +61,7 @@ class AirportTicket extends Ticket
     /**
      * @return string
      */
-    public function getLuggageType(): string
+    public function luggageType(): string
     {
         return $this->luggageType;
     }

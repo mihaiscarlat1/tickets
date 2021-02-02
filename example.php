@@ -3,12 +3,11 @@ include 'vendor/autoload.php';
 
 use EM\ItineraryManagement\AirportBusTicket;
 use EM\ItineraryManagement\AirportTicket;
-use EM\ItineraryManagement\Printer;
 use EM\ItineraryManagement\Tickets;
-use EM\ItineraryManagement\TicketSortingAlgorithmA;
 use EM\ItineraryManagement\TicketSortingAlgorithmB;
 use EM\ItineraryManagement\TrainTicket;
 use EM\ItineraryManagement\TramTicket;
+use EM\ItineraryManagement\PortAdapter\Printer;
 
 $start = 'St. Anton am Arlberg Bahnhof';
 $a = new TrainTicket('St. Anton am Arlberg Bahnhof', 'Innsbruck Hbf', 'RJX 765', '3', '17C');
@@ -24,9 +23,7 @@ shuffle($ticketsArtificialArray);
 
 $tickets = new Tickets(...$ticketsArtificialArray);
 
-$ticketSortingAlgo = new TicketSortingAlgorithmB($tickets);
-$orderedTickets = $ticketSortingAlgo->sort($start);
-
-//print_r($orderedTickets);
+$ticketSortingAlgo = new TicketSortingAlgorithmB();
+$orderedTickets = $ticketSortingAlgo->sort($tickets);
 
 Printer::printAll($orderedTickets);

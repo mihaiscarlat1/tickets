@@ -21,7 +21,7 @@ class TrainTicket extends Ticket
     /**
      * @return string
      */
-    public function getTrainNr(): string
+    public function trainNr(): string
     {
         return $this->trainNr;
     }
@@ -29,7 +29,7 @@ class TrainTicket extends Ticket
     /**
      * @return string
      */
-    public function getPlatform(): string
+    public function platform(): string
     {
         return $this->platform;
     }
@@ -37,7 +37,7 @@ class TrainTicket extends Ticket
     /**
      * @return ?string
      */
-    public function getSeatNr(): ?string
+    public function seatNr(): ?string
     {
         return $this->seatNr;
     }

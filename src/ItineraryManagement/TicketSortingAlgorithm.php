@@ -3,5 +3,5 @@ namespace EM\ItineraryManagement;
 
 interface TicketSortingAlgorithm
 {
-    public function sort(string $start): Tickets;
+    public function sort(Tickets $initialTickets): Tickets;
 }

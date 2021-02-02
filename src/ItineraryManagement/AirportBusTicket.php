@@ -17,7 +17,7 @@ class AirportBusTicket extends Ticket
     /**
      * @return string|null
      */
-    public function getSeatNr(): ?string
+    public function seatNr(): ?string
     {
         return $this->seatNr;
     }

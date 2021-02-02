@@ -6,16 +6,13 @@ namespace EM\ItineraryManagement;
 
 class TicketSortingAlgorithmB implements TicketSortingAlgorithm
 {
-    private Tickets $initialTickets;
-
-    public function __construct(Tickets $initialTickets)
+    public function __construct()
     {
-        $this->initialTickets = $initialTickets;
     }
 
-    public function sort(string $start): Tickets
+    public function sort(Tickets $initialTickets): Tickets
     {
-        $sortedTickets = $this->sortB(iterator_to_array($this->initialTickets));
+        $sortedTickets = $this->sortB(iterator_to_array($initialTickets));
         return New Tickets(...$sortedTickets);
     }
 
@@ -36,6 +33,7 @@ class TicketSortingAlgorithmB implements TicketSortingAlgorithm
 
         $firstElem = current($sorted);
         $lastElem = end($sorted);
+        $elements = count($a);
         foreach($a as $k=>$v) {
             if($v->to() === $firstElem->from()) {
                 unset($a[$k]);
@@ -45,6 +43,9 @@ class TicketSortingAlgorithmB implements TicketSortingAlgorithm
             if($v->from() === $lastElem->to()) {
                 unset($a[$k]);
                 $sorted[] = $v;
+                continue;
+            }
+            if($elements - count($a) === 2) {
                 continue;
             }
         }

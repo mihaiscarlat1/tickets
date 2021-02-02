@@ -1,8 +1,15 @@
 <?php
 
 
-namespace EM\ItineraryManagement;
+namespace EM\ItineraryManagement\PortAdapter;
 
+
+use EM\ItineraryManagement\AirportBusTicket;
+use EM\ItineraryManagement\AirportTicket;
+use EM\ItineraryManagement\Ticket;
+use EM\ItineraryManagement\Tickets;
+use EM\ItineraryManagement\TrainTicket;
+use EM\ItineraryManagement\TramTicket;
 
 class Printer
 {
@@ -22,11 +29,11 @@ class Printer
         if($ticket instanceof TrainTicket) {
             return sprintf(
                 self::TRAIN_OUTPUT,
-                $ticket->getTrainNr(),
-                $ticket->getPlatform(),
+                $ticket->trainNr(),
+                $ticket->platform(),
                 $ticket->from(),
                 $ticket->to(),
-                self::getSeatOutput($ticket->getSeatNr())
+                self::getSeatOutput($ticket->seatNr())
             );
         }
 
@@ -34,11 +41,11 @@ class Printer
             return sprintf(
                 self::AIRPORT_OUTPUT,
                 $ticket->from(),
-                $ticket->getTicketNr(),
+                $ticket->ticketNr(),
                 $ticket->to(),
-                $ticket->getGate(),
-                $ticket->getSeat(),
-                self::getLuggageOutput($ticket->getLuggageType())
+                $ticket->gate(),
+                $ticket->seat(),
+                self::getLuggageOutput($ticket->luggageType())
             );
         }
 
@@ -56,7 +63,7 @@ class Printer
                 self::AIRPORT_BUS_OUTPUT,
                 $ticket->from(),
                 $ticket->to(),
-                self::getSeatOutput($ticket->getSeatNr())
+                self::getSeatOutput($ticket->seatNr())
             );
         }
 
