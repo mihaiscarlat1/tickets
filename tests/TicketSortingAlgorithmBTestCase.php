@@ -2,8 +2,8 @@
 
 namespace Test;
 
-use EM\ItineraryManagement\Tickets;
-use EM\ItineraryManagement\TicketSortingAlgorithmB;
+use EM\ItineraryManagement\Domain\TicketsStack;
+use EM\ItineraryManagement\PortAdapter\TicketSortingAlgorithmB;
 use PHPUnit\Framework\TestCase;
 
 class TicketSortingAlgorithmBTestCase extends TestCase
@@ -13,13 +13,13 @@ class TicketSortingAlgorithmBTestCase extends TestCase
     /**
      * @dataProvider inputDataProvider
      */
-    public function testSortingB($start, $ticketsArray)
+    public function testSortingB($ticketsArray)
     {
         $ticketsArtificialArray = $ticketsArray;
         shuffle($ticketsArtificialArray);
 
-        $ticketsCorrectOrder = new Tickets(...$ticketsArray);
-        $ticketsShuffled = new Tickets(...$ticketsArtificialArray);
+        $ticketsCorrectOrder = new TicketsStack(...$ticketsArray);
+        $ticketsShuffled = new TicketsStack(...$ticketsArtificialArray);
 
         $ticketSortingAlgo = new TicketSortingAlgorithmB();
         $orderedTickets = $ticketSortingAlgo->sort($ticketsShuffled);

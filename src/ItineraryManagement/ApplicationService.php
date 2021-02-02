@@ -2,21 +2,20 @@
 
 namespace EM\ItineraryManagement;
 
-use EM\ItineraryManagement\PortAdapter\Printer;
+use EM\ItineraryManagement\Domain\Tickets;
+use EM\ItineraryManagement\Domain\TicketSortingAlgorithm;
 
 class ApplicationService
 {
-    private Printer $printer;
     private TicketSortingAlgorithm $sortingAlgorithm;
 
-    public function __construct(Printer $printer, TicketSortingAlgorithm $ticketSortingAlgorithm)
+    public function __construct(TicketSortingAlgorithm $ticketSortingAlgorithm)
     {
-        $this->printer = $printer;
         $this->sortingAlgorithm = $ticketSortingAlgorithm;
     }
 
     public function sort(Tickets $tickets)
     {
-        return $this->sortingAlgorithm($tickets);
+        return $this->sortingAlgorithm->sort($tickets);
     }
 }

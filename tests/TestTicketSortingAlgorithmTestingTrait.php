@@ -4,10 +4,8 @@
 namespace Test;
 
 
-use EM\ItineraryManagement\AirportBusTicket;
-use EM\ItineraryManagement\AirportTicket;
-use EM\ItineraryManagement\TrainTicket;
-use EM\ItineraryManagement\TramTicket;
+
+use EM\ItineraryManagement\Domain\Ticket;
 
 trait TestTicketSortingAlgorithmTestingTrait
 {
@@ -17,19 +15,26 @@ trait TestTicketSortingAlgorithmTestingTrait
      */
     public function inputDataProvider()
     {
-        $start = 'St. Anton am Arlberg Bahnhof';
-        $a = new TrainTicket('St. Anton am Arlberg Bahnhof', 'Innsbruck Hbf', 'RJX 765', '3', '17C');
-        $b = new TramTicket('Innsbruck Hbf', 'Innsbruck Airport', 'S5');
-        $c = new AirportTicket('Innsbruck Airport', 'Gara Venetia Santa Lucia', 'AA904', '10', '18B', AirportTicket::SELF_LUGGAGE);
-        $d = new TrainTicket('Gara Venetia Santa Lucia', 'Bologna San Ruffillo', 'ICN 35780', '1', '13F');
-        $e = new AirportBusTicket('Bologna San Ruffillo', 'Bologna Guglielmo Marconi Airport');
-        $f = new AirportTicket('Bologna Guglielmo Marconi Airport', 'Paris CDG Airport', 'AF1229', '22', '10A', AirportTicket::SELF_LUGGAGE);
-        $g = new AirportTicket('Paris CDG Airport', 'Chicago', 'AF136', '32', '10A', AirportTicket::LUGGAGE_PREVIOUS_FLIGHT);
-
-        $ticketsArray = [$a, $b, $c, $d, $e, $f, $g];
+        $ticketsArray[] = $this->getTicketMock('St. Anton am Arlberg Bahnhof', 'Innsbruck Hbf');
+        $ticketsArray[] = $this->getTicketMock('Innsbruck Hbf', 'Innsbruck Airport');
+        $ticketsArray[] = $this->getTicketMock('Innsbruck Airport', 'Gara Venetia Santa Lucia');
+        $ticketsArray[] = $this->getTicketMock('Gara Venetia Santa Lucia', 'Bologna San Ruffillo');
+        $ticketsArray[] = $this->getTicketMock('Bologna San Ruffillo', 'Bologna Guglielmo Marconi Airport');
+        $ticketsArray[] = $this->getTicketMock('Bologna Guglielmo Marconi Airport', 'Paris CDG Airport');
+        $ticketsArray[] = $this->getTicketMock('Paris CDG Airport', 'Chicago');
+        $ticketsArray[] = $this->getTicketMock('Chicago', 'a');
+        $ticketsArray[] = $this->getTicketMock('a', 'b');
+        $ticketsArray[] = $this->getTicketMock('b', 'c');
+        $ticketsArray[] = $this->getTicketMock('c', 'd');
+        $ticketsArray[] = $this->getTicketMock('d', 'e');
 
         return [
-            [$start, $ticketsArray],
+            [$ticketsArray],
         ];
+    }
+
+    private function getTicketMock($to, $from): Ticket
+    {
+        return $this->getMockForAbstractClass(Ticket::class, [$to, $from]);
     }
 }

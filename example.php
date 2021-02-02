@@ -1,13 +1,14 @@
 <?php
 include 'vendor/autoload.php';
 
-use EM\ItineraryManagement\AirportBusTicket;
-use EM\ItineraryManagement\AirportTicket;
-use EM\ItineraryManagement\Tickets;
-use EM\ItineraryManagement\TicketSortingAlgorithmB;
-use EM\ItineraryManagement\TrainTicket;
-use EM\ItineraryManagement\TramTicket;
+use EM\ItineraryManagement\ApplicationService;
+use EM\ItineraryManagement\Example\AirportBusTicket;
+use EM\ItineraryManagement\Example\AirportTicket;
+use EM\ItineraryManagement\Domain\TicketsStack;
+use EM\ItineraryManagement\Example\TrainTicket;
+use EM\ItineraryManagement\Example\TramTicket;
 use EM\ItineraryManagement\PortAdapter\Printer;
+use EM\ItineraryManagement\PortAdapter\TicketSortingAlgorithmB;
 
 $start = 'St. Anton am Arlberg Bahnhof';
 $a = new TrainTicket('St. Anton am Arlberg Bahnhof', 'Innsbruck Hbf', 'RJX 765', '3', '17C');
@@ -21,9 +22,12 @@ $g = new AirportTicket('Paris CDG Airport', 'Chicago', 'AF136', '32', '10A', Air
 $ticketsArtificialArray = [$a, $b, $c, $d, $e, $f, $g];
 shuffle($ticketsArtificialArray);
 
-$tickets = new Tickets(...$ticketsArtificialArray);
+$tickets = new TicketsStack(...$ticketsArtificialArray);
 
-$ticketSortingAlgo = new TicketSortingAlgorithmB();
-$orderedTickets = $ticketSortingAlgo->sort($tickets);
+$sortingAlgo = new TicketSortingAlgorithmB();
+
+$app = new ApplicationService($sortingAlgo); // should be configurable through a service container
+
+$orderedTickets = $app->sort($tickets);
 
 Printer::printAll($orderedTickets);
