@@ -5,7 +5,8 @@ namespace Test;
 
 
 
-use EM\ItineraryManagement\Domain\Ticket;
+
+use EM\ItineraryManagement\Ticket\Ticket;
 
 trait TestTicketSortingAlgorithmTestingTrait
 {

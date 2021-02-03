@@ -16,5 +16,6 @@
     "autoload-dev": {
         "psr-4": {"Test\\": "tests"}
     },
-    "require": {}
+    "require": {},
+    "description": ""
 }

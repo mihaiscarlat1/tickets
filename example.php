@@ -1,14 +1,14 @@
 <?php
 include 'vendor/autoload.php';
 
+use EM\ItineraryManagement\Algorithm\TicketSortingAlgorithmB;
 use EM\ItineraryManagement\ApplicationService;
-use EM\ItineraryManagement\Example\AirportBusTicket;
-use EM\ItineraryManagement\Example\AirportTicket;
-use EM\ItineraryManagement\Domain\TicketsStack;
-use EM\ItineraryManagement\Example\TrainTicket;
-use EM\ItineraryManagement\Example\TramTicket;
-use EM\ItineraryManagement\PortAdapter\Printer;
-use EM\ItineraryManagement\PortAdapter\TicketSortingAlgorithmB;
+use EM\ImplementationExample\AirportBusTicket;
+use EM\ImplementationExample\AirportTicket;
+use EM\ImplementationExample\TrainTicket;
+use EM\ImplementationExample\TramTicket;
+use EM\ItineraryManagement\Exception\UnconnectableTicketsException;
+use EM\ItineraryManagement\Printer;
 
 $start = 'St. Anton am Arlberg Bahnhof';
 $a = new TrainTicket('St. Anton am Arlberg Bahnhof', 'Innsbruck Hbf', 'RJX 765', '3', '17C');
@@ -19,15 +19,19 @@ $e = new AirportBusTicket('Bologna San Ruffillo', 'Bologna Guglielmo Marconi Air
 $f = new AirportTicket('Bologna Guglielmo Marconi Airport', 'Paris CDG Airport', 'AF1229', '22', '10A', AirportTicket::SELF_LUGGAGE);
 $g = new AirportTicket('Paris CDG Airport', 'Chicago', 'AF136', '32', '10A', AirportTicket::LUGGAGE_PREVIOUS_FLIGHT);
 
-$ticketsArtificialArray = [$a, $b, $c, $d, $e, $f, $g];
-shuffle($ticketsArtificialArray);
-
-$tickets = new TicketsStack(...$ticketsArtificialArray);
+$ticketsArray = [$a, $b, $c, $d, $e, $f, $g];
+shuffle($ticketsArray);
 
 $sortingAlgo = new TicketSortingAlgorithmB();
 
 $app = new ApplicationService($sortingAlgo); // should be configurable through a service container
 
-$orderedTickets = $app->sort($tickets);
+try {
+    $orderedTickets = $app->sort($ticketsArray);
+    Printer::printAll(...$orderedTickets);
+} catch (InvalidArgumentException $e) {
+    echo 'Tickets are not correctly formatted';
+} catch (UnconnectableTicketsException $e) {
+    echo 'Gap in your itinerary. Please check again!';
+}
 
-Printer::printAll($orderedTickets);

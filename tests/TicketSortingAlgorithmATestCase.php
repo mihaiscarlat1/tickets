@@ -2,8 +2,9 @@
 
 namespace Test;
 
-use EM\ItineraryManagement\Domain\TicketsStack;
-use EM\ItineraryManagement\PortAdapter\TicketSortingAlgorithmA;
+use EM\ItineraryManagement\Algorithm\TicketSortingAlgorithmA;
+use EM\ItineraryManagement\Exception\UnconnectableTicketsException;
+use EM\ItineraryManagement\Ticket\Tickets;
 use PHPUnit\Framework\TestCase;
 
 class TicketSortingAlgorithmATestCase extends TestCase
@@ -18,8 +19,8 @@ class TicketSortingAlgorithmATestCase extends TestCase
         $ticketsToBeShuffled = $ticketsArray;
         shuffle($ticketsToBeShuffled);
 
-        $ticketsCorrectOrder = new TicketsStack(...$ticketsArray);
-        $ticketsShuffled = new TicketsStack(...$ticketsToBeShuffled);
+        $ticketsCorrectOrder = new Tickets(...$ticketsArray);
+        $ticketsShuffled = new Tickets(...$ticketsToBeShuffled);
 
         $ticketSortingAlgo = new TicketSortingAlgorithmA();
         $orderedTickets = $ticketSortingAlgo->sort($ticketsShuffled);
@@ -32,5 +33,22 @@ class TicketSortingAlgorithmATestCase extends TestCase
             $ticketsCorrectOrder->next();
             $orderedTickets->next();
         }
+    }
+
+    /**
+     * @dataProvider inputDataProvider
+     */
+    public function testTicketsNotConnectionThrowException($ticketsArray)
+    {
+        $this->expectException(UnconnectableTicketsException::class);
+
+        array_splice($ticketsArray, 1, 2);
+        $ticketsToBeShuffled = $ticketsArray;
+        shuffle($ticketsToBeShuffled);
+
+        $ticketsShuffled = new Tickets(...$ticketsToBeShuffled);
+
+        $ticketSortingAlgo = new TicketSortingAlgorithmA();
+        $ticketSortingAlgo->sort($ticketsShuffled);
     }
 }
