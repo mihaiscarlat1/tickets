@@ -22,7 +22,7 @@
 
 # How to run the code
 1. Install composer
-   docker: docker run --rm -v ${pwd}:/app composer:latest install
+   docker: docker run --rm -v ${pwd}:/app composer:latest install --no-dev
 2. try the example from the root folder. In case no php interpreter is installed (ie windows), try:
    docker run -p 82:80 --name php-container --rm -v ${pwd}:/var/www/html php:7.4-cli php /var/www/html/example.php
 
