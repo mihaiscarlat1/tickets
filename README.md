@@ -1,10 +1,10 @@
 # Assumptions
-1. The biggest assumption i made is regarding the 3 - 4 statements in the example. 
-    Example 3 specifies that Kevin reaches Venice Airport. Example 4 continues directly
+1. The biggest assumption I made is regarding the 3 - 4 statement gap in the example. 
+   Example 3 specifies that Kevin reaches Venice Airport. Example 4 continues directly
    from Gara Venetia Santa Lucia. I suspect there is a statement missing (probably
-   the aforementioned tax);
+   the aforementioned taxi)
 2. The printable information part. I may have misunderstood the requirements and i should have received inputs as strings,
-    and break them down and build the objects inside the api. But from what i understand, it should be objects who have an abstraction 
+   and break them down and build the objects inside the api. But from what i understand, it should be objects who have an abstraction 
    that allows us to easily print the content. If i were to go one step further here, i would separate the concerns, so the objects
    themselves don't have to contain the printing logic. I think it would be good to have an interface (which extends a general TicketPrinterInterface)
    for each ticket type, so Kevin could decide what colors/ texts / language he likes best.
