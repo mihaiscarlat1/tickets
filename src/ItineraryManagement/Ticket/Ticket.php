@@ -22,5 +22,10 @@ abstract class Ticket implements Printable
         return $this->to;
     }
 
+    public function sameRoute(Ticket $ticket): bool
+    {
+        return $this->to === $ticket->to();
+    }
+
     abstract public function humanReadable(): string;
 }

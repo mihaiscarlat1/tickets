@@ -3,9 +3,6 @@
 
 namespace EM\ItineraryManagement\Exception;
 
-
-use Exception;
-
-class UnconnectableTicketsException extends Exception
+class UnconnectableTicketsException extends InvalidArgumentException
 {
 }

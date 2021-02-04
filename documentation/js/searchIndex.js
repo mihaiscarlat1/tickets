@@ -221,6 +221,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EM-ItineraryManagement-Algorithm-TicketSortingAlgorithmB.html#method_sort"
         },                {
+            "fqsen": "\\EM\\ItineraryManagement\\Algorithm\\TicketSortingAlgorithmB\u003A\u003AserializeTicket\u0028\u0029",
+            "name": "serializeTicket",
+            "summary": "",
+            "url": "classes/EM-ItineraryManagement-Algorithm-TicketSortingAlgorithmB.html#method_serializeTicket"
+        },                {
             "fqsen": "\\EM\\ItineraryManagement\\Algorithm\\TicketSortingAlgorithmB\u003A\u003AsortB\u0028\u0029",
             "name": "sortB",
             "summary": "",
@@ -266,16 +271,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/EM-ItineraryManagement-ItineraryManager.html#method_sort"
         },                {
-            "fqsen": "\\EM\\ItineraryManagement\\Printer",
-            "name": "Printer",
-            "summary": "",
-            "url": "classes/EM-ItineraryManagement-Printer.html"
-        },                {
-            "fqsen": "\\EM\\ItineraryManagement\\Printer\u003A\u003AprintAll\u0028\u0029",
-            "name": "printAll",
-            "summary": "",
-            "url": "classes/EM-ItineraryManagement-Printer.html#method_printAll"
-        },                {
             "fqsen": "\\EM\\ItineraryManagement\\Ticket\\Printable",
             "name": "Printable",
             "summary": "",
@@ -305,6 +300,11 @@ Search.appendIndex(
             "name": "to",
             "summary": "",
             "url": "classes/EM-ItineraryManagement-Ticket-Ticket.html#property_to"
+        },                {
+            "fqsen": "\\EM\\ItineraryManagement\\Ticket\\Ticket\u003A\u003AsameRoute\u0028\u0029",
+            "name": "sameRoute",
+            "summary": "",
+            "url": "classes/EM-ItineraryManagement-Ticket-Ticket.html#method_sameRoute"
         },                {
             "fqsen": "\\EM\\ItineraryManagement\\Ticket\\Ticket\u003A\u003AhumanReadable\u0028\u0029",
             "name": "humanReadable",
@@ -350,6 +350,11 @@ Search.appendIndex(
             "name": "tickets",
             "summary": "",
             "url": "classes/EM-ItineraryManagement-Ticket-Tickets.html#property_tickets"
+        },                {
+            "fqsen": "\\EM\\ItineraryManagement\\Exception\\DuplicateTicketsException",
+            "name": "DuplicateTicketsException",
+            "summary": "",
+            "url": "classes/EM-ItineraryManagement-Exception-DuplicateTicketsException.html"
         },                {
             "fqsen": "\\",
             "name": "\\",

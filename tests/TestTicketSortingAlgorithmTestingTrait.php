@@ -23,19 +23,30 @@ trait TestTicketSortingAlgorithmTestingTrait
         $ticketsArray[] = $this->getTicketMock('Bologna San Ruffillo', 'Bologna Guglielmo Marconi Airport');
         $ticketsArray[] = $this->getTicketMock('Bologna Guglielmo Marconi Airport', 'Paris CDG Airport');
         $ticketsArray[] = $this->getTicketMock('Paris CDG Airport', 'Chicago');
-        $ticketsArray[] = $this->getTicketMock('Chicago', 'a');
-        $ticketsArray[] = $this->getTicketMock('a', 'b');
-        $ticketsArray[] = $this->getTicketMock('b', 'c');
-        $ticketsArray[] = $this->getTicketMock('c', 'd');
-        $ticketsArray[] = $this->getTicketMock('d', 'e');
 
         return [
             [$ticketsArray],
         ];
     }
 
-    private function getTicketMock($to, $from): Ticket
+    public function duplicateTicketsDataProvider()
     {
-        return $this->getMockForAbstractClass(Ticket::class, [$to, $from]);
+        $a = $this->getTicketMock('St. Anton am Arlberg Bahnhof', 'Innsbruck Hbf');
+        $b = $this->getTicketMock('Innsbruck Hbf', 'Innsbruck Airport');
+        $c = $this->getTicketMock('Innsbruck Airport', 'Gara Venetia Santa Lucia');
+        $d = $this->getTicketMock('Gara Venetia Santa Lucia', 'Bologna San Ruffillo');
+
+        return [
+            [[$a, $a, $a, $b, $c, $d]],
+            [[$a, $b, $c, $d, $d, $d]],
+            [[$a, $b, $c, $c, $c, $d]],
+            [[$a, $b, $b, $b, $c, $d]],
+            [[$a, $b, $a, $b, $a, $c]],
+        ];
+    }
+
+    private function getTicketMock($from, $to): Ticket
+    {
+        return $this->getMockForAbstractClass(Ticket::class, [$from, $to]);
     }
 }

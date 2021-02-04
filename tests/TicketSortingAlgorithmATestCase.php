@@ -3,6 +3,8 @@
 namespace Test;
 
 use EM\ItineraryManagement\Algorithm\TicketSortingAlgorithmA;
+use EM\ItineraryManagement\Algorithm\TicketSortingAlgorithmB;
+use EM\ItineraryManagement\Exception\DuplicateTicketsException;
 use EM\ItineraryManagement\Exception\UnconnectableTicketsException;
 use EM\ItineraryManagement\Ticket\Tickets;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +40,7 @@ class TicketSortingAlgorithmATestCase extends TestCase
     /**
      * @dataProvider inputDataProvider
      */
-    public function testTicketsNotConnectionThrowException($ticketsArray)
+    public function testTicketsNotConnectingThrowException($ticketsArray)
     {
         $this->expectException(UnconnectableTicketsException::class);
 
@@ -50,5 +52,16 @@ class TicketSortingAlgorithmATestCase extends TestCase
 
         $ticketSortingAlgo = new TicketSortingAlgorithmA();
         $ticketSortingAlgo->sort($ticketsShuffled);
+    }
+
+    /**
+     * @dataProvider duplicateTicketsDataProvider
+     */
+    public function testDuplicateTicketsThrowException($ticketsArray)
+    {
+        $this->expectException(DuplicateTicketsException::class);
+
+        $ticketSortingAlgo = new TicketSortingAlgorithmA();
+        $ticketSortingAlgo->sort(new Tickets(...$ticketsArray));
     }
 }

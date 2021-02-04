@@ -7,8 +7,8 @@ use EM\ImplementationExample\AirportBusTicket;
 use EM\ImplementationExample\AirportTicket;
 use EM\ImplementationExample\TrainTicket;
 use EM\ImplementationExample\TramTicket;
+use EM\ItineraryManagement\Exception\DuplicateTicketsException;
 use EM\ItineraryManagement\Exception\UnconnectableTicketsException;
-use EM\ItineraryManagement\Printer;
 
 $start = 'St. Anton am Arlberg Bahnhof';
 $a = new TrainTicket('St. Anton am Arlberg Bahnhof', 'Innsbruck Hbf', 'RJX 765', '3', '17C');
@@ -28,10 +28,20 @@ $app = new ApplicationService($sortingAlgo); // should be configurable through a
 
 try {
     $orderedTickets = $app->sort($ticketsArray);
-    Printer::printAll(...$orderedTickets);
-} catch (InvalidArgumentException $e) {
-    echo 'Tickets are not correctly formatted';
 } catch (UnconnectableTicketsException $e) {
-    echo 'Gap in your itinerary. Please check again!';
+    die('Gap in your itinerary. Please check again!');
+} catch (DuplicateTicketsException $e) {
+    die('Duplicate tickets. Decide which route you want to take and try again!');
+} catch (InvalidArgumentException $e) {
+    die('Invalid tickets!');
 }
 
+
+$i=0;
+echo $i. '. Start'. PHP_EOL;
+foreach($orderedTickets as $ticket) {
+    echo ++$i.'. ';
+    echo $ticket->humanReadable();
+    echo PHP_EOL;
+}
+echo ++$i. '. Last destination reached.';

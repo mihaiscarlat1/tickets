@@ -2,6 +2,8 @@
 
 namespace EM\ItineraryManagement;
 
+use EM\ItineraryManagement\Exception\DuplicateTicketsException;
+use EM\ItineraryManagement\Exception\UnconnectableTicketsException;
 use EM\ItineraryManagement\Ticket\Ticket;
 use EM\ItineraryManagement\Ticket\Tickets;
 use EM\ItineraryManagement\Algorithm\TicketSortingAlgorithm;
@@ -20,7 +22,8 @@ class ApplicationService implements ItineraryManager
      * @param Ticket[] $tickets
      * @return Ticket[]
      * @throws InvalidArgumentException
-     * @throws Exception\UnconnectableTicketsException
+     * @throws UnconnectableTicketsException
+     * @throws DuplicateTicketsException
      */
     public function sort(array $tickets): array
     {

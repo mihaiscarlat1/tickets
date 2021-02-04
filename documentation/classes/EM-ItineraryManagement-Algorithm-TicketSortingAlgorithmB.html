@@ -104,7 +104,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ItineraryManagement/Algorithm/TicketSortingAlgorithmB.php"><a href="files/src-itinerarymanagement-algorithm-ticketsortingalgorithmb.html"><abbr title="src/ItineraryManagement/Algorithm/TicketSortingAlgorithmB.php">TicketSortingAlgorithmB.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">12</span>
 </aside>
 
         
@@ -147,6 +147,13 @@
 </dt>
 <dd></dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/EM-ItineraryManagement-Algorithm-TicketSortingAlgorithmB.html#method_serializeTicket">serializeTicket()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd></dd>
+
         </dl>
 
 
@@ -173,7 +180,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ItineraryManagement/Algorithm/TicketSortingAlgorithmB.php"><a href="files/src-itinerarymanagement-algorithm-ticketsortingalgorithmb.html"><abbr title="src/ItineraryManagement/Algorithm/TicketSortingAlgorithmB.php">TicketSortingAlgorithmB.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">14</span>
 </aside>
 
     
@@ -216,13 +223,13 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/ItineraryManagement/Algorithm/TicketSortingAlgorithmB.php"><a href="files/src-itinerarymanagement-algorithm-ticketsortingalgorithmb.html"><abbr title="src/ItineraryManagement/Algorithm/TicketSortingAlgorithmB.php">TicketSortingAlgorithmB.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">sortB</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/EM-ItineraryManagement-Ticket-Ticket.html"><abbr title="\EM\ItineraryManagement\Ticket\Ticket">Ticket</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$unsorted</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/EM-ItineraryManagement-Ticket-Ticket.html"><abbr title="\EM\ItineraryManagement\Ticket\Ticket">Ticket</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sorted</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                <span class="phpdocumentor-signature__name">sortB</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/EM-ItineraryManagement-Ticket-Ticket.html"><abbr title="\EM\ItineraryManagement\Ticket\Ticket">Ticket</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$unsorted</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/EM-ItineraryManagement-Ticket-Ticket.html"><abbr title="\EM\ItineraryManagement\Ticket\Ticket">Ticket</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sorted</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$duplicateMemo</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -244,6 +251,14 @@
                     <section class="phpdocumentor-description"></section>
 
             </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$duplicateMemo</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
             </dl>
 
     
@@ -256,6 +271,15 @@
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/EM-ItineraryManagement-Exception-DuplicateTicketsException.html"><abbr title="\EM\ItineraryManagement\Exception\DuplicateTicketsException">DuplicateTicketsException</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><a href="classes/EM-ItineraryManagement-Exception-UnconnectableTicketsException.html"><abbr title="\EM\ItineraryManagement\Exception\UnconnectableTicketsException">UnconnectableTicketsException</abbr></a></span>
                                                             
                                                  <section class="phpdocumentor-description"></section>
@@ -265,6 +289,48 @@
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_serializeTicket">
+        serializeTicket()
+        <a href="classes/EM-ItineraryManagement-Algorithm-TicketSortingAlgorithmB.html#method_serializeTicket" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/ItineraryManagement/Algorithm/TicketSortingAlgorithmB.php"><a href="files/src-itinerarymanagement-algorithm-ticketsortingalgorithmb.html"><abbr title="src/ItineraryManagement/Algorithm/TicketSortingAlgorithmB.php">TicketSortingAlgorithmB.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">20</span>
+</aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__name">serializeTicket</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/EM-ItineraryManagement-Ticket-Ticket.html"><abbr title="\EM\ItineraryManagement\Ticket\Ticket">Ticket</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ticket</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$ticket</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/EM-ItineraryManagement-Ticket-Ticket.html"><abbr title="\EM\ItineraryManagement\Ticket\Ticket">Ticket</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
             <section class="phpdocumentor-description"></section>
 

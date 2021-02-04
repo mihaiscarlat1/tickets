@@ -1,6 +1,7 @@
 <?php
 namespace EM\ItineraryManagement\Algorithm;
 
+use EM\ItineraryManagement\Exception\DuplicateTicketsException;
 use EM\ItineraryManagement\Exception\UnconnectableTicketsException;
 use EM\ItineraryManagement\Ticket\Tickets;
 
@@ -10,6 +11,9 @@ class TicketSortingAlgorithmA implements TicketSortingAlgorithm
     {
         $newArrayFrom = $orderedArray = $ticketToArray = [];
         foreach($initialTickets as $ticket) {
+            if(isset($newArrayFrom[$ticket->from()]) || in_array($ticket->to(), $ticketToArray)) {
+                throw new DuplicateTicketsException();
+            }
             $newArrayFrom[$ticket->from()] = $ticket;
             $ticketToArray[] = $ticket->to();
         }
