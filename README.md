@@ -10,7 +10,7 @@
    for each ticket type, so Kevin could decide what colors/ texts / language he likes best.
 
 # Documentation
-1. I have used phpdoc to generate the documentation, which can be found in documentation
+1. I have used phpdoc to generate the documentation, which can be found in the documentation folder
 2. I've also created a sequence_diagram. Mainly i've used to document apis through openapi, i don't have much experience lately with other tools
 3. Architecture:
     a. ApplicationService is the entrypoint of the app. Can be initially mocked by using ItineraryManager
